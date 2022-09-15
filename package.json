@@ -1,10 +1,6 @@
 {
   "name": "full-stack-prisma-trpc-mobx-react",
-  "workspaces": [
-    "client",
-    "client_vue",
-    "server"
-  ],
+  "workspaces": [ "client" ],
   "scripts": {
     "dev": "npm run dev --workspace=server & npm run dev --workspace=client",
     "install-all": "npm run install-dev --workspace=server && cd client && npm install",
