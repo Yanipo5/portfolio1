@@ -31,9 +31,9 @@ function onEnter() {
 
 <style scoped>
 .card :deep(.el-card__body) {
-  padding: 2vw;
+  padding: var(--todo-vw);
 }
 .card :deep(.el-input-group__prepend) {
-  padding: 1vw;
+  padding: var(--todo-vw);
 }
 </style>

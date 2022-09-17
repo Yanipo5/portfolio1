@@ -1,26 +1,17 @@
 <script lang="ts" setup>
-// import TodoItemDropdown from "./TodoItemDropdown.vue";
 import TodoItemDelete from "./TodoItemDelete.vue";
+import TodoItemCheck from "./TodoItemCheck.vue";
 import type { Todo } from "@/stores/todos";
 import { Star, StarFilled } from "@element-plus/icons-vue";
 import useTodosStore from "@/stores/todos";
 
 const store = useTodosStore();
-
-const props = defineProps<{
-  todo: Todo;
-}>();
-
-function handleStar() {
-  store.toggleTodoStar(props.todo.id);
-}
-function handleDelete() {
-  store.deleteTodo(props.todo.id);
-}
+const props = defineProps<{ todo: Todo }>();
+const handleStar = () => store.toggleTodoStar(props.todo.id);
 </script>
 
 <template>
-  <el-card shadow="hover" :body-style="{ padding: '2vw' }">
+  <el-card shadow="hover" :body-style="{ padding: 'var(--todo-vw)' }">
     <div class="todo-item-content">
       <span class="todo-item-content-star">
         <el-icon v-if="props.todo.isStar" @click="handleStar" color="gold" size="30px"><StarFilled /></el-icon>
@@ -28,9 +19,11 @@ function handleDelete() {
       </span>
       <el-input class="todo-item-content-title" v-model="props.todo.title" />
       <span class="todo-item-content-delete">
+        <TodoItemCheck :id="props.todo.id" :isDone="props.todo.isDone" />
+      </span>
+      <span class="todo-item-content-delete">
         <TodoItemDelete :id="props.todo.id" />
       </span>
-      <!-- <TodoItemDropdown :id="props.todo.id" /> -->
     </div>
   </el-card>
 </template>
