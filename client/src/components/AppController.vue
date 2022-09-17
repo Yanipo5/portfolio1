@@ -18,7 +18,7 @@ function onEnter() {
 <template>
   <el-card class="card">
     <el-input v-model="input" :placeholder="placeholder" @keyup.enter="onEnter">
-      <template #prepend>
+      <template #prepend class="card-prepend">
         <el-switch v-model="mode" :inline-prompt="true" style="--el-switch-off-color: var(--el-color-primary)" :active-icon="Search" :inactive-icon="Plus" inactive-color="primary" />
       </template>
 
@@ -31,9 +31,20 @@ function onEnter() {
 
 <style scoped>
 .card :deep(.el-card__body) {
+  background: var(--todo-bg);
   padding: var(--todo-vw);
 }
 .card :deep(.el-input-group__prepend) {
   padding: var(--todo-vw);
+}
+
+.card :deep(.el-input-group__prepend),
+.card :deep(.el-input-group__append) {
+  background: var(--todo-bg);
+}
+
+.card :deep(.el-input-group__prepend) {
+  box-shadow: unset;
+  background: transparent;
 }
 </style>

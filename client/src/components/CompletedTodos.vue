@@ -8,7 +8,7 @@ const store = useTodosStore();
 </script>
 
 <template>
-  <el-card v-if="store.completedTodos.length > 0" :body-style="{ padding: '2vw' }" class="card">
+  <el-card v-if="store.completedTodos.length > 0" :body-style="{ padding: '2vw' }" class="selector-card">
     <el-switch v-model="showCompletedTodo" class="switch" />
     <span> {{ showCompletedTodo ? "Show" : "Hide" }} Completed Todos</span>
   </el-card>
@@ -16,12 +16,13 @@ const store = useTodosStore();
 </template>
 
 <style scoped>
-.card {
-  margin: var(--todo-vw) 0;
-}
-.card :deep(el-card__body) {
+.selector-card :deep(.el-card__body) {
+  background: var(--todo-bg);
   display: flex;
   align-items: center;
+}
+.selector-card {
+  margin: var(--todo-vw) 0;
 }
 .switch {
   margin-right: var(--todo-vw);

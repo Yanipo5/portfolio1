@@ -11,7 +11,7 @@ const handleStar = () => store.toggleTodoStar(props.todo.id);
 </script>
 
 <template>
-  <el-card shadow="hover" :body-style="{ padding: 'var(--todo-vw)' }">
+  <el-card shadow="hover" :body-style="{ padding: 'var(--todo-vw)' }" class="card">
     <div class="todo-item-content">
       <span class="todo-item-content-star">
         <el-icon v-if="props.todo.isStar" @click="handleStar" color="gold" size="30px"><StarFilled /></el-icon>
@@ -29,6 +29,10 @@ const handleStar = () => store.toggleTodoStar(props.todo.id);
 </template>
 
 <style scoped>
+.card :deep(.el-card__body) {
+  background: var(--todo-bg);
+}
+
 .todo-item-content {
   display: flex;
   justify-content: space-around;

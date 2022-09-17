@@ -2,6 +2,9 @@
 
 :root {
   --todo-vw: 2vw;
+  --todo-bg: rgba(0, 0, 0, 80%);
+  --todo-color: rgba(255, 255, 255, 80%);
+  --el-text-color-primary: var(--todo-color);
 }
 
 #app {
@@ -26,4 +29,11 @@ a,
   #app {
     padding: 1vw;
   }
+}
+
+.el-input__wrapper {
+  background-color: var(--todo-bg);
+}
+.el-input__inner {
+  color: var(--todo-color);
 }
