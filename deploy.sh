@@ -3,6 +3,7 @@
 # Dee: https://vitejs.dev/guide/#index-html-and-project-root
 
 # abort on errors
+git checkout -b gh-pages
 set -e
 
 # build
@@ -15,7 +16,6 @@ cd dist
 # echo 'www.example.com' > CNAME
 
 # git init
-# git checkout -b main
 git commit -am 'update client'
 
 # if you are deploying to https://<USERNAME>.github.io
