@@ -11,7 +11,7 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-  base: "/portfolio1",
+  base: "/Todo-Vue-3",
   server: {
     port: 3001,
     proxy: {
