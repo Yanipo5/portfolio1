@@ -20,6 +20,7 @@ const store = useTodosStore();
   background: var(--todo-bg);
   display: flex;
   align-items: center;
+  padding: var(--todo-vw);
 }
 .selector-card {
   margin: var(--todo-vw) 0;
