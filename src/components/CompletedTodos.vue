@@ -8,7 +8,7 @@ const store = useTodosStore();
 </script>
 
 <template>
-  <el-card v-if="store.completedTodos.length > 0" :body-style="{ padding: '2vw' }" class="selector-card">
+  <el-card v-if="store.completedTodos.length > 0" :body-style="{ padding: 'var(--todo-vw)' }" class="selector-card">
     <el-switch v-model="showCompletedTodo" class="switch" />
     <span> {{ showCompletedTodo ? "Show" : "Hide" }} Completed Todos</span>
   </el-card>
