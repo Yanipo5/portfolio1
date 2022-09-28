@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import AppControllerSortDropdown from "./AppControllerSortDropdown.vue";
-import { Search, Plus } from "@element-plus/icons-vue";
-import { ref } from "vue";
-import useTodosStore from "@/stores/todos";
+import AppControllerSortDropdown from './AppControllerSortDropdown.vue';
+import { Search, Plus } from '@element-plus/icons-vue';
+import useTodosStore from '@/stores/todos';
 
 const store = useTodosStore();
 
-const input = ref("");
-const mode = ref(false);
-const placeholder = mode ? "Add Todo" : "Search Todo";
+const getPlaceholder = () => (!store.mode ? 'Add Todo' : 'Search Todo');
 function onEnter() {
-  store.addTodo({ title: input.value });
-  input.value = "";
+  if (store.mode) return;
+  store.addTodo({ title: store.input });
+  store.input = '';
 }
 </script>
 
 <template>
   <el-card class="card">
-    <el-input v-model="input" :placeholder="placeholder" @keyup.enter="onEnter">
+    <el-input v-model="store.input" :placeholder="getPlaceholder()" @keyup.enter="onEnter">
       <template #prepend class="card-prepend">
-        <el-switch v-model="mode" :inline-prompt="true" style="--el-switch-off-color: var(--el-color-primary)" :active-icon="Search" :inactive-icon="Plus" inactive-color="primary" />
+        <el-switch v-model="store.mode" :inline-prompt="true" style="--el-switch-off-color: var(--el-color-primary)" :active-icon="Search" :inactive-icon="Plus" inactive-color="primary" />
       </template>
 
       <template #append>
