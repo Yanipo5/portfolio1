@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import TodoItemDelete from "./TodoItemDelete.vue";
-import TodoItemCheck from "./TodoItemCheck.vue";
-import type { Todo } from "@/stores/todos";
-import { Star, StarFilled } from "@element-plus/icons-vue";
-import useTodosStore from "@/stores/todos";
+import TodoItemDelete from './TodoItemDelete.vue';
+import TodoItemCheck from './TodoItemCheck.vue';
+import type { Todo } from '@/stores/todos';
+import { Star, StarFilled } from '@element-plus/icons-vue';
+import useTodosStore from '@/stores/todos';
 
 const store = useTodosStore();
 const props = defineProps<{ todo: Todo }>();
@@ -29,6 +29,15 @@ const handleStar = () => store.toggleTodoStar(props.todo.id);
 </template>
 
 <style scoped>
+.card :deep(.el-input__wrapper) {
+  transition: 0.2s ease-in;
+  box-shadow: none;
+  background-color: transparent;
+}
+.card :deep(.el-input__wrapper.is-focus) {
+  box-shadow: 0 0 0 1px var(--el-color-primary) inset;
+  background-color: black;
+}
 .card :deep(.el-card__body) {
   background: var(--todo-bg);
 }
