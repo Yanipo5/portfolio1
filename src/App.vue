@@ -12,7 +12,6 @@ const store = useTodosStore();
     <AppController class="app-controller" />
     <TodoItem v-for="todo in store.unCompletedTodos" :todo="todo" class="todo-item" />
     <CompletedTodos />
-    {{ store }}
   </div>
 </template>
 
