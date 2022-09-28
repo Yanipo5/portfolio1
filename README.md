@@ -5,7 +5,3 @@
 # See In Action
 
 [https://yanipo5.github.io/Todo-Vue-3 github page](https://yanipo5.github.io/Todo-Vue-3)
-
-TODO:
-
-- Sort functionality
