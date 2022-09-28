@@ -7,7 +7,7 @@ const store = useTodosStore();
 
 <template>
   <el-dropdown>
-    <el-button :icon="store.sort.sortDirection ? SortUp : SortDown" aria-label="Sort Selector" />
+    <el-button :icon="store.sort.sortDirection ? SortUp : SortDown" class="sort-button" aria-label="Sort Selector" />
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item @click="() => store.setSort('Title')"><span :class="{ selected: store.sort.sortBy === 'Title' }">Title</span></el-dropdown-item>
@@ -20,5 +20,8 @@ const store = useTodosStore();
 <style scoped>
 .selected {
   font-weight: bold;
+}
+.sort-button :deep(svg) {
+  color: var(--todo-color);
 }
 </style>
