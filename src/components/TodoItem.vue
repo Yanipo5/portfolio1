@@ -14,8 +14,8 @@ const handleStar = () => store.toggleTodoStar(props.todo.id);
   <el-card shadow="hover" :body-style="{ padding: 'var(--todo-vw)' }" class="card">
     <div class="todo-item-content">
       <span class="todo-item-content-star">
-        <el-icon v-if="props.todo.isStar" @click="handleStar" color="gold" size="30px"><StarFilled /></el-icon>
-        <el-icon v-else @click="handleStar" color="gold" fill="gold" size="30px"><Star /></el-icon>
+        <el-icon v-if="props.todo.isStar" @click="handleStar" color="gold" size="30px" class="star-align"><StarFilled class="StarFilled" /></el-icon>
+        <el-icon v-else @click="handleStar" color="gold" size="30px"><Star /></el-icon>
       </span>
       <el-input class="todo-item-content-title" v-model="props.todo.title" />
       <span class="todo-item-content-delete">
@@ -51,6 +51,9 @@ const handleStar = () => store.toggleTodoStar(props.todo.id);
 .todo-item-content-star {
   flex: 0 0 auto;
   margin-right: 1vw;
+}
+.todo-item-content-star :deep(svg.StarFilled) {
+  scale: 1.2;
 }
 
 .todo-item-content-delete {
