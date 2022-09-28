@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Check, Delete, More } from "@element-plus/icons-vue";
-import useTodosStore from "@/stores/todos";
+import { Check, Delete, More } from '@element-plus/icons-vue';
+import useTodosStore from '@/stores/todos';
 
 const props = defineProps<{
   id: string;
@@ -21,10 +21,10 @@ function handleDelete() {
     <template #dropdown>
       <el-dropdown-menu>
         <span class="el-dropdown-item-icon"
-          ><el-dropdown-item><el-button type="success" :icon="Check" circle @click="handleDone" /></el-dropdown-item
+          ><el-dropdown-item><el-button type="success" :icon="Check" circle @click="handleDone" aria-label="Done" /></el-dropdown-item
         ></span>
         <span class="el-dropdown-item-icon"
-          ><el-dropdown-item><el-button type="danger" :icon="Delete" circle @click="handleDelete" /></el-dropdown-item
+          ><el-dropdown-item><el-button type="danger" :icon="Delete" circle @click="handleDelete" aria-label="Delete" /></el-dropdown-item
         ></span>
       </el-dropdown-menu>
     </template>
