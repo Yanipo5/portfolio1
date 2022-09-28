@@ -16,16 +16,20 @@ export class Todo {
   }
 }
 
-type SortBy = "CreatedAt.asc" | "CreatedAt.desc" | "A-Z" | "Z-A";
+export type SortBy = "CreatedAt" | "Title";
+type Sort = {
+  sortBy: SortBy;
+  sortDirection: boolean;
+};
 
 export default defineStore("todos", {
   state: () => ({
     todos: _load(),
-    sortBy: "CreatedAt.asc" as SortBy,
+    sort: { sortBy: "CreatedAt", sortDirection: true } as Sort,
   }),
   getters: {
-    unCompletedTodos: state => state.todos.filter(t => !t.isDone).sort(_sort),
-    completedTodos: state => state.todos.filter(t => t.isDone).sort(_sort),
+    unCompletedTodos: state => state.todos.filter(t => !t.isDone).sort((a, b) => _sort(state.sort, a, b)),
+    completedTodos: state => state.todos.filter(t => t.isDone).sort((a, b) => _sort(state.sort, a, b)),
   },
   actions: {
     addTodo(todo: Pick<Todo, "title">) {
@@ -50,13 +54,27 @@ export default defineStore("todos", {
       this.todos = this.todos.filter(todo => todo.id !== id);
       _save(this.$state.todos);
     },
+    setSort(sortBy: SortBy) {
+      if (this.sort.sortBy === sortBy) this.sort.sortDirection = !this.sort.sortDirection;
+      this.sort.sortBy = sortBy;
+    },
   },
 });
 
-function _sort(a: Todo, b: Todo): number {
-  if (a.isStar && b.isStar) return 0;
-  if (a.isStar || b.isStar) return a.isStar ? -1 : 1;
-  return 0;
+function _sort(sort: Sort, a: Todo, b: Todo): number {
+  if (a.isStar !== b.isStar && (a.isStar || b.isStar)) return a.isStar ? -1 : 1;
+
+  const direction = sort.sortDirection ? 1 : -1;
+  switch (sort.sortBy) {
+    case "CreatedAt":
+      const res = new Date(a.createAt).getTime() <= new Date(b.createAt).getTime() ? 1 : -1;
+      return res * direction;
+    case "Title":
+      return a.title.localeCompare(b.title) * direction;
+    default:
+      const x: never = sort.sortBy;
+      throw new Error(x);
+  }
 }
 
 function _save(todos: Todo[]): void {

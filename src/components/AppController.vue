@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppControllerDropdown from "./AppControllerDropdown.vue";
+import AppControllerSortDropdown from "./AppControllerSortDropdown.vue";
 import { Search, Plus } from "@element-plus/icons-vue";
 import { ref } from "vue";
 import useTodosStore from "@/stores/todos";
@@ -23,7 +23,7 @@ function onEnter() {
       </template>
 
       <template #append>
-        <div><AppControllerDropdown /></div>
+        <div><AppControllerSortDropdown /></div>
       </template>
     </el-input>
   </el-card>
