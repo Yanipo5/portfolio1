@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SortUp, SortDown } from '@element-plus/icons-vue';
-import useTodosStore from '@/stores/todos';
+import { SortUp, SortDown } from "@element-plus/icons-vue";
+import useTodosStore from "@/stores/todos";
 
 const store = useTodosStore();
 </script>
@@ -20,6 +20,10 @@ const store = useTodosStore();
 <style scoped>
 .selected {
   font-weight: bold;
+}
+.sort-button {
+  height: auto;
+  background: transparent;
 }
 .sort-button :deep(svg) {
   color: var(--todo-color);
